@@ -1,0 +1,41 @@
+{
+  "$comment": "File: event-v1.schema.json. Purpose: Publish the machine-readable version-one telemetry envelope contract.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/JasonStys/player-telemetry-analytics-platform/blob/main/contracts/event-v1.schema.json",
+  "title": "Telemetry event version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "schema_version",
+    "player_id",
+    "event_type",
+    "event_time",
+    "received_at",
+    "game_version",
+    "platform",
+    "properties"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "pattern": "^evt_[0-9a-f]{16}$" },
+    "schema_version": { "const": 1 },
+    "player_id": { "type": "string", "pattern": "^ply_[0-9a-f]{12}$" },
+    "event_type": {
+      "enum": ["session_start", "level_start", "level_complete", "purchase", "reset"]
+    },
+    "event_time": { "type": "string", "format": "date-time" },
+    "received_at": { "type": "string", "format": "date-time" },
+    "game_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "platform": { "enum": ["pc", "console", "mobile"] },
+    "properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "level": { "type": ["integer", "null"], "minimum": 1, "maximum": 1000 },
+        "amount_cents": { "type": ["integer", "null"], "minimum": 0, "maximum": 100000 },
+        "currency": { "type": ["string", "null"], "pattern": "^[A-Z]{3}$" },
+        "reason": { "type": ["string", "null"], "minLength": 1, "maxLength": 80 }
+      }
+    }
+  }
+}

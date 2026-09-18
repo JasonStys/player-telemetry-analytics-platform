@@ -1,0 +1,33 @@
+# File: .gitignore
+# Purpose: Keep generated, secret, dependency, database, and report artifacts out of source control.
+.venv/
+.pip-cache/
+.pip-audit-cache/
+.docker-config/
+__pycache__/
+*.py[cod]
+*.duckdb
+*.duckdb.wal
+.pytest_cache/
+.pytest-tmp/
+.test-runtime/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+*.egg-info/
+.env
+data/generated/
+data/warehouse/
+docs/reports/generated/
+web/node_modules/
+web/.npm-cache/
+web/coverage/
+web/dist/
+web/playwright-report/
+web/test-results/
+.DS_Store
+Thumbs.db

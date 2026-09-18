@@ -1,0 +1,8 @@
+# File: .prettierignore
+# Purpose: Exclude dependency, build, coverage, and browser artifacts from source formatting.
+node_modules/
+coverage/
+dist/
+playwright-report/
+test-results/
+.npm-cache/

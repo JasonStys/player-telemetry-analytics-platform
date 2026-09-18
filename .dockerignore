@@ -1,0 +1,17 @@
+# File: .dockerignore
+# Purpose: Keep local caches, reports, VCS data, and generated datasets out of container contexts.
+.git
+.github
+.venv
+__pycache__
+*.pyc
+*.duckdb
+.pytest_cache
+.mypy_cache
+.ruff_cache
+htmlcov
+web/node_modules
+web/coverage
+web/dist
+data/generated
+docs/reports/generated
