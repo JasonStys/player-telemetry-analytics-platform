@@ -129,7 +129,7 @@ jobs:
     name: Chromium end-to-end verification
     runs-on: ubuntu-latest
     env:
-      TELEMETRY_DB_PATH: ${{ runner.temp }}/telemetry-e2e.duckdb
+      TELEMETRY_DB_PATH: /tmp/telemetry-e2e.duckdb
       TELEMETRY_BOOTSTRAP_DEMO: "true"
     steps:
       - name: Check out source
