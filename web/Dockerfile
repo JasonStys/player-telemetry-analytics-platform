@@ -1,6 +1,6 @@
 # File: web/Dockerfile
 # Purpose: Build the locked dashboard and serve static assets from an unprivileged Nginx process.
-FROM node:24.18-alpine AS build
+FROM node:24.20-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
