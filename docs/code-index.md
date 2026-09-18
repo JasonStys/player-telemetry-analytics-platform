@@ -263,7 +263,7 @@ for exact declaration and important-variable locations. Regenerate after source 
 
 ## `web/e2e/dashboard.spec.ts`
 
-- Line 39: `skipLink`
+- Line 41: `skipLink`
 
 ## `web/src/App.test.tsx`
 
