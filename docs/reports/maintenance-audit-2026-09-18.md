@@ -2,11 +2,13 @@
 
 ## Result
 
-The final validated source baseline was `042da0c`. Hosted [CI](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/runs/35388432295) and [CodeQL](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/runs/35388432282) passed.
+The final validated source baseline was `a204b57`. Hosted [CI](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/runs/35389764408) and [CodeQL](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/runs/35389764350) passed.
 
 ## Dependency decisions
 
 - Python 3.14, nginx, mypy, setup-python, and CodeQL updates were reviewed and merged.
+- Pinned checkout and setup-node actions were advanced to their validated major releases after the
+  complete application, browser, container, dependency-review, and CodeQL matrices passed.
 - The dashboard builder moved to the latest Node 24 Alpine patch after the full application,
   PostgreSQL, browser, container, dependency-review, and CodeQL matrices passed.
 - TypeScript 7 was deferred because typescript-eslint does not yet support it.
