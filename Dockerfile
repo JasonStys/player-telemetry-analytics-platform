@@ -1,6 +1,6 @@
 # File: Dockerfile
 # Purpose: Build a reproducible non-root Python API image with the SQL assets required at runtime.
-FROM python:3.13.15-slim AS runtime
+FROM python:3.14.7-slim AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
