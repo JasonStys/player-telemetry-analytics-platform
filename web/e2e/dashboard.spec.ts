@@ -24,7 +24,9 @@ test("analyst can inspect quality evidence and a synthetic timeline", async ({
     page.getByRole("table", { name: /rules-based candidates/i }),
   ).toBeVisible();
 
-  await page.getByLabel("Player").selectOption({ index: 1 });
+  await page
+    .getByRole("combobox", { name: "Player", exact: true })
+    .selectOption({ index: 1 });
   await expect(
     page
       .getByRole("table", { name: /accepted events/i })
