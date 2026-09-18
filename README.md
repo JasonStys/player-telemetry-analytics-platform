@@ -99,17 +99,17 @@ quality flag; invalid, duplicate, or privacy-bearing records enter quarantine an
 
 ## Major feature guide
 
-| Feature | Implementation | Evidence |
-|---|---|---|
-| Event contract | Immutable version-one Pydantic model with semantic property checks | Contract and property tests |
-| Privacy boundary | HMAC-SHA-256 pseudonyms plus recursive key/value screening | Privacy unit and property tests |
-| Reliable ingestion | Transactional batches, SHA-256 source identity, duplicate quarantine | Replay, conflict, and rollback-oriented tests |
-| Sessionization | Thirty-minute inactivity boundary with `lag` and cumulative windows | Out-of-order event test and SQL reconciliation |
-| Retention | Exact D0/D1/D7 activity by first-seen cohort | Golden/reconciliation assertions |
-| Funnels | Daily distinct-player stage counts with previous-stage conversion | Independent source-count checks |
-| Anomaly review | Late arrival, completion-without-start, and burst rules | Rule-specific fixtures; no automated fraud claims |
-| Data products | Summary, cohorts, funnel, player timelines, and Parquet exports | API, browser, and Parquet read-back tests |
-| Operations | Health endpoint, bounded queries, runbook, containers, CI | Smoke tests and hosted workflow artifacts |
+| Feature            | Implementation                                                       | Evidence                                          |
+| ------------------ | -------------------------------------------------------------------- | ------------------------------------------------- |
+| Event contract     | Immutable version-one Pydantic model with semantic property checks   | Contract and property tests                       |
+| Privacy boundary   | HMAC-SHA-256 pseudonyms plus recursive key/value screening           | Privacy unit and property tests                   |
+| Reliable ingestion | Transactional batches, SHA-256 source identity, duplicate quarantine | Replay, conflict, and rollback-oriented tests     |
+| Sessionization     | Thirty-minute inactivity boundary with `lag` and cumulative windows  | Out-of-order event test and SQL reconciliation    |
+| Retention          | Exact D0/D1/D7 activity by first-seen cohort                         | Golden/reconciliation assertions                  |
+| Funnels            | Daily distinct-player stage counts with previous-stage conversion    | Independent source-count checks                   |
+| Anomaly review     | Late arrival, completion-without-start, and burst rules              | Rule-specific fixtures; no automated fraud claims |
+| Data products      | Summary, cohorts, funnel, player timelines, and Parquet exports      | API, browser, and Parquet read-back tests         |
+| Operations         | Health endpoint, bounded queries, runbook, containers, CI            | Smoke tests and hosted workflow artifacts         |
 
 ## Verification
 
@@ -132,39 +132,39 @@ Measured results are recorded in:
 
 ## Documentation
 
-| Document | Purpose |
-|---|---|
-| [`docs/architecture.md`](docs/architecture.md) | Boundaries, data flow, deployment model, and trade-offs |
-| [`docs/data-contract.md`](docs/data-contract.md) | Event fields, semantics, examples, and versioning policy |
-| [`docs/metrics-catalog.md`](docs/metrics-catalog.md) | Exact definitions, denominators, and limitations |
-| [`docs/api.md`](docs/api.md) | Endpoint behavior, parameters, and errors |
-| [`docs/testing.md`](docs/testing.md) | Test pyramid, cases, thresholds, and remaining gaps |
-| [`docs/complexity.md`](docs/complexity.md) | Big-O analysis and storage/query consequences |
-| [`docs/file-catalog.md`](docs/file-catalog.md) | One-line purpose for every authored repository file |
-| [`docs/security-privacy.md`](docs/security-privacy.md) | Threat model, privacy controls, and safe-data policy |
-| [`docs/operations.md`](docs/operations.md) | Setup, backup, failure recovery, and troubleshooting runbook |
-| [`docs/code-index.md`](docs/code-index.md) | Generated exact line locations for source symbols and variables |
-| [`docs/research.md`](docs/research.md) | Primary technical sources and stack-selection rationale |
+| Document                                               | Purpose                                                         |
+| ------------------------------------------------------ | --------------------------------------------------------------- |
+| [`docs/architecture.md`](docs/architecture.md)         | Boundaries, data flow, deployment model, and trade-offs         |
+| [`docs/data-contract.md`](docs/data-contract.md)       | Event fields, semantics, examples, and versioning policy        |
+| [`docs/metrics-catalog.md`](docs/metrics-catalog.md)   | Exact definitions, denominators, and limitations                |
+| [`docs/api.md`](docs/api.md)                           | Endpoint behavior, parameters, and errors                       |
+| [`docs/testing.md`](docs/testing.md)                   | Test pyramid, cases, thresholds, and remaining gaps             |
+| [`docs/complexity.md`](docs/complexity.md)             | Big-O analysis and storage/query consequences                   |
+| [`docs/file-catalog.md`](docs/file-catalog.md)         | One-line purpose for every authored repository file             |
+| [`docs/security-privacy.md`](docs/security-privacy.md) | Threat model, privacy controls, and safe-data policy            |
+| [`docs/operations.md`](docs/operations.md)             | Setup, backup, failure recovery, and troubleshooting runbook    |
+| [`docs/code-index.md`](docs/code-index.md)             | Generated exact line locations for source symbols and variables |
+| [`docs/research.md`](docs/research.md)                 | Primary technical sources and stack-selection rationale         |
 
 ## Repository map
 
-| Path | Summary |
-|---|---|
-| `src/telemetry_platform/models.py` | Versioned event and result contracts |
-| `src/telemetry_platform/privacy.py` | Pseudonymization and sensitive-content screening |
-| `src/telemetry_platform/generator.py` | Deterministic synthetic workload and corruption fixtures |
-| `src/telemetry_platform/storage.py` | DuckDB ingestion, quarantine, transformations, plans, and exports |
-| `src/telemetry_platform/metrics.py` | Bounded dashboard queries and reconciliation surface |
-| `src/telemetry_platform/api.py` | FastAPI application and read-only analytics endpoints |
-| `src/telemetry_platform/cli.py` | Generate, ingest, rebuild, export, demo, and benchmark commands |
-| `sql/` | Reviewed bronze/silver/gold SQL and PostgreSQL schema |
-| `contracts/` | Machine-readable version-one JSON Schema |
-| `tests/` | Python unit, property, integration, API, and performance tests |
-| `web/src/` | Typed accessible dashboard and component tests |
-| `web/e2e/` | Real-browser smoke and keyboard-navigation tests |
-| `scripts/` | Repeatable verification, demonstration, and repository checks |
-| `.github/workflows/` | Least-privilege CI, CodeQL, and dependency review |
-| `docs/` | Architecture, contracts, metrics, operations, decisions, and evidence |
+| Path                                  | Summary                                                               |
+| ------------------------------------- | --------------------------------------------------------------------- |
+| `src/telemetry_platform/models.py`    | Versioned event and result contracts                                  |
+| `src/telemetry_platform/privacy.py`   | Pseudonymization and sensitive-content screening                      |
+| `src/telemetry_platform/generator.py` | Deterministic synthetic workload and corruption fixtures              |
+| `src/telemetry_platform/storage.py`   | DuckDB ingestion, quarantine, transformations, plans, and exports     |
+| `src/telemetry_platform/metrics.py`   | Bounded dashboard queries and reconciliation surface                  |
+| `src/telemetry_platform/api.py`       | FastAPI application and read-only analytics endpoints                 |
+| `src/telemetry_platform/cli.py`       | Generate, ingest, rebuild, export, demo, and benchmark commands       |
+| `sql/`                                | Reviewed bronze/silver/gold SQL and PostgreSQL schema                 |
+| `contracts/`                          | Machine-readable version-one JSON Schema                              |
+| `tests/`                              | Python unit, property, integration, API, and performance tests        |
+| `web/src/`                            | Typed accessible dashboard and component tests                        |
+| `web/e2e/`                            | Real-browser smoke and keyboard-navigation tests                      |
+| `scripts/`                            | Repeatable verification, demonstration, and repository checks         |
+| `.github/workflows/`                  | Least-privilege CI, CodeQL, and dependency review                     |
+| `docs/`                               | Architecture, contracts, metrics, operations, decisions, and evidence |
 
 ## Scope and limitations
 
@@ -177,4 +177,5 @@ Measured results are recorded in:
   are intentionally outside version one.
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the quality gate and [`SECURITY.md`](SECURITY.md) for safe
-reporting. Released under the [MIT License](LICENSE).
+reporting. The [latest maintenance audit](docs/reports/maintenance-audit-2026-09-18.md) records
+hosted verification and dependency decisions. Released under the [MIT License](LICENSE).
