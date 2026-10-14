@@ -15,6 +15,7 @@ const excludedDirectories = new Set([
   ".git",
   ".mypy_cache",
   ".pip-audit-cache",
+  ".pip-cache",
   ".pytest-tmp",
   ".pytest_cache",
   ".ruff_cache",

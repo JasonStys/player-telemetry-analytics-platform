@@ -15,20 +15,20 @@ for exact declaration and important-variable locations. Regenerate after source 
 - Line 12: `outputPath`
 - Line 13: `supportedExtensions`
 - Line 14: `excludedDirectories`
-- Line 28: `patterns`
-- Line 38: `walk`
-- Line 40: `path`
-- Line 47: `extract`
-- Line 51: `pattern`
-- Line 52: `match`
-- Line 60: `render`
-- Line 61: `lines`
-- Line 68: `path`
-- Line 69: `declarations`
-- Line 71: `repositoryPath`
-- Line 73: `declaration`
-- Line 82: `main`
-- Line 83: `generated`
+- Line 29: `patterns`
+- Line 39: `walk`
+- Line 41: `path`
+- Line 48: `extract`
+- Line 52: `pattern`
+- Line 53: `match`
+- Line 61: `render`
+- Line 62: `lines`
+- Line 69: `path`
+- Line 70: `declarations`
+- Line 72: `repositoryPath`
+- Line 74: `declaration`
+- Line 83: `main`
+- Line 84: `generated`
 
 ## `scripts/validate-repository.mjs`
 
