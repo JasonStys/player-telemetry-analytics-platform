@@ -23,7 +23,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "hatchling>=1.27,<2",
-  "httpx2==2.13.1",
+  "httpx2==2.16.0",
   "hypothesis>=6.130,<7",
   "mypy>=1.17,<3",
   "pip-audit>=2.9,<3",
