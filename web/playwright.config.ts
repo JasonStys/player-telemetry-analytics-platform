@@ -4,6 +4,12 @@
  * Symbols and line locations: see docs/code-index.md; webServer owns the two local test processes.
  */
 import { defineConfig, devices } from "@playwright/test";
+import { randomUUID } from "node:crypto";
+import { resolve } from "node:path";
+
+const apiPort = process.env.TELEMETRY_TEST_API_PORT ?? "18180";
+const uiPort = process.env.TELEMETRY_TEST_UI_PORT ?? "18181";
+const database = resolve("..", ".e2e-runtime", `${randomUUID()}.duckdb`);
 
 export default defineConfig({
   testDir: "./e2e",
@@ -11,23 +17,24 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: `http://127.0.0.1:${uiPort}`,
     trace: "on-first-retry",
     ...devices["Desktop Chrome"],
   },
   webServer: [
     {
-      command:
-        "python -m uvicorn telemetry_platform.api:app --host 127.0.0.1 --port 8000",
+      command: `"${process.env.TELEMETRY_TEST_PYTHON ?? "python"}" -m uvicorn telemetry_platform.api:app --host 127.0.0.1 --port ${apiPort}`,
       cwd: "..",
-      url: "http://127.0.0.1:8000/health",
-      reuseExistingServer: !process.env.CI,
+      url: `http://127.0.0.1:${apiPort}/health`,
+      env: { TELEMETRY_DB_PATH: database, TELEMETRY_BOOTSTRAP_DEMO: "true" },
+      reuseExistingServer: false,
       timeout: 120_000,
     },
     {
-      command: "npm run dev -- --host 127.0.0.1 --port 4173",
-      url: "http://127.0.0.1:4173",
-      reuseExistingServer: !process.env.CI,
+      command: `npm run dev -- --host 127.0.0.1 --port ${uiPort} --strictPort`,
+      url: `http://127.0.0.1:${uiPort}`,
+      env: { TELEMETRY_TEST_API_PORT: apiPort },
+      reuseExistingServer: false,
       timeout: 120_000,
     },
   ],

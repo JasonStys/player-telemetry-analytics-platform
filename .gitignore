@@ -11,6 +11,8 @@ __pycache__/
 .pytest_cache/
 .pytest-tmp/
 .test-runtime/
+.runtime/
+.e2e-runtime/
 .mypy_cache/
 .ruff_cache/
 .coverage

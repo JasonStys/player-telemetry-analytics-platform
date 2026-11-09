@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { loadDashboard, loadTimeline } from "./api";
 import type { DashboardData, TimelineEvent } from "./types";
+import CohortReview from "./CohortReview";
 
 function formatPercent(value: number | null): string {
   return value === null ? "Not available" : `${(value * 100).toFixed(1)}%`;
@@ -114,6 +115,7 @@ export default function App() {
       </header>
 
       <main id="main-content">
+        <CohortReview />
         <p className="sr-only" aria-live="polite">
           {status}
         </p>

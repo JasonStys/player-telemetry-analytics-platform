@@ -36,19 +36,19 @@ for exact declaration and important-variable locations. Regenerate after source 
 - Line 12: `requiredFiles`
 - Line 32: `headerExtensions`
 - Line 33: `excludedDirectories`
-- Line 53: `walk`
-- Line 55: `path`
-- Line 62: `brokenMarkdownLinks`
-- Line 63: `markdown`
-- Line 65: `target`
-- Line 67: `localTarget`
-- Line 73: `main`
-- Line 74: `failures`
-- Line 75: `requiredFile`
-- Line 80: `path`
-- Line 81: `repositoryPath`
-- Line 83: `target`
-- Line 88: `firstLines`
+- Line 55: `walk`
+- Line 57: `path`
+- Line 64: `brokenMarkdownLinks`
+- Line 65: `markdown`
+- Line 67: `target`
+- Line 69: `localTarget`
+- Line 75: `main`
+- Line 76: `failures`
+- Line 77: `requiredFile`
+- Line 82: `path`
+- Line 83: `repositoryPath`
+- Line 85: `target`
+- Line 90: `firstLines`
 
 ## `scripts/verify.sh`
 
@@ -97,19 +97,20 @@ for exact declaration and important-variable locations. Regenerate after source 
 
 ## `src/telemetry_platform/api.py`
 
-- Line 23: `DEFAULT_DATABASE_PATH`
-- Line 26: `_database_path`
-- Line 32: `_bootstrap`
-- Line 43: `create_app`
-- Line 49: `lifespan`
-- Line 75: `use_service`
-- Line 81: `health`
-- Line 91: `summary`
-- Line 101: `retention`
-- Line 111: `funnel`
-- Line 121: `anomalies`
-- Line 131: `players`
-- Line 141: `timeline`
+- Line 25: `DEFAULT_DATABASE_PATH`
+- Line 28: `_database_path`
+- Line 34: `_bootstrap`
+- Line 45: `create_app`
+- Line 51: `lifespan`
+- Line 77: `use_service`
+- Line 83: `health`
+- Line 93: `summary`
+- Line 103: `review_cohort`
+- Line 122: `retention`
+- Line 132: `funnel`
+- Line 142: `anomalies`
+- Line 152: `players`
+- Line 162: `timeline`
 
 ## `src/telemetry_platform/cli.py`
 
@@ -119,6 +120,11 @@ for exact declaration and important-variable locations. Regenerate after source 
 - Line 68: `_run_pipeline`
 - Line 79: `_benchmark`
 - Line 101: `main`
+
+## `src/telemetry_platform/cohorts.py`
+
+- Line 15: `MAX_VERSION_LENGTH`
+- Line 18: `cohort_review`
 
 ## `src/telemetry_platform/generator.py`
 
@@ -223,6 +229,11 @@ for exact declaration and important-variable locations. Regenerate after source 
 - Line 29: `test_demo_and_benchmark_commands_emit_reports`
 - Line 56: `test_benchmark_returns_failure_when_budget_is_impossible`
 
+## `tests/test_cohorts.py`
+
+- Line 20: `test_cohort_membership_maturity_and_late_hindsight`
+- Line 88: `test_empty_and_http_validation`
+
 ## `tests/test_generator.py`
 
 - Line 23: `test_generation_is_deterministic_and_contract_valid`
@@ -261,9 +272,25 @@ for exact declaration and important-variable locations. Regenerate after source 
 - Line 123: `test_file_ingestion_matches_canonical_record_ingestion`
 - Line 137: `test_late_arrivals_are_labeled_not_discarded`
 
+## `web/e2e/cohorts.spec.ts`
+
+- Line 15: `response`
+- Line 19: `dossier`
+- Line 20: `results`
+- Line 28: `rows`
+- Line 34: `index`
+- Line 35: `row`
+- Line 47: `scroll`
+
 ## `web/e2e/dashboard.spec.ts`
 
 - Line 41: `skipLink`
+
+## `web/playwright.config.ts`
+
+- Line 10: `apiPort`
+- Line 11: `uiPort`
+- Line 12: `database`
 
 ## `web/src/App.test.tsx`
 
@@ -278,15 +305,29 @@ for exact declaration and important-variable locations. Regenerate after source 
 
 ## `web/src/App.tsx`
 
-- Line 11: `formatPercent`
-- Line 15: `formatDate`
-- Line 21: `MetricCard`
-- Line 39: `EmptyState`
-- Line 43: `App`
-- Line 51: `controller`
-- Line 73: `controller`
-- Line 88: `latestRetention`
-- Line 90: `latestCohort`
+- Line 12: `formatPercent`
+- Line 16: `formatDate`
+- Line 22: `MetricCard`
+- Line 40: `EmptyState`
+- Line 44: `App`
+- Line 52: `controller`
+- Line 74: `controller`
+- Line 89: `latestRetention`
+- Line 91: `latestCohort`
+
+## `web/src/CohortReview.test.tsx`
+
+- Line 13: `fetch`
+- Line 45: `user`
+- Line 56: `fetch`
+- Line 72: `user`
+
+## `web/src/CohortReview.tsx`
+
+- Line 11: `CohortReview`
+- Line 15: `submit`
+- Line 17: `values`
+- Line 18: `params`
 
 ## `web/src/api.test.ts`
 
@@ -299,11 +340,12 @@ for exact declaration and important-variable locations. Regenerate after source 
 
 ## `web/src/api.ts`
 
-- Line 8: `API_BASE`
-- Line 10: `requestJson`
-- Line 11: `response`
-- Line 21: `loadDashboard`
-- Line 34: `loadTimeline`
+- Line 9: `API_BASE`
+- Line 12: `loadCohortReview`
+- Line 18: `requestJson`
+- Line 19: `response`
+- Line 29: `loadDashboard`
+- Line 42: `loadTimeline`
 
 ## `web/src/main.tsx`
 
@@ -319,6 +361,7 @@ for exact declaration and important-variable locations. Regenerate after source 
 - Line 53: `PlayerSummary`
 - Line 66: `TimelineEvent`
 - Line 76: `DashboardData`
+- Line 85: `CohortDossier`
 
 ## `web/src/vite-env.d.ts`
 

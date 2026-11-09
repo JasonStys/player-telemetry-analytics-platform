@@ -16,6 +16,10 @@ intended for local or controlled portfolio demonstration only.
 
 ## Endpoints
 
+### `GET /api/cohort-review`
+
+Returns one consistently scoped acquisition-cohort dossier with totals, D0/D1/D7 mature denominators and null censored rates. Optional `start`, `end`, `platform`, `version`, `as_of` parameters apply together; UTC receipt cutoffs exclude later-arriving hindsight. Detailed definitions and422 conditions are in [cohort review](cohort-review.md). This does not filter the other global endpoints.
+
 ### `GET /health`
 
 Opens the warehouse and returns status, accepted event count, and latest completed batch time. It does

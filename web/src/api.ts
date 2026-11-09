@@ -4,8 +4,16 @@
  * Symbols and line locations: see docs/code-index.md; API_BASE resolves the build-time service origin.
  */
 import type { DashboardData, TimelineEvent } from "./types";
+import type { CohortDossier } from "./types";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") ?? "";
+
+/** Fetch one server-side consistent cohort review with URL-encoded filter values. */
+export function loadCohortReview(
+  params: URLSearchParams,
+): Promise<CohortDossier> {
+  return requestJson<CohortDossier>(`/api/cohort-review?${params.toString()}`);
+}
 
 async function requestJson<T>(path: string, signal?: AbortSignal): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {

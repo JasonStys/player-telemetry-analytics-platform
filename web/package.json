@@ -18,11 +18,17 @@
     "typecheck": "tsc -b --pretty false",
     "verify": "npm run format && npm run lint && npm run typecheck && npm run test && npm run build"
   },
+  "overrides": {
+    "minimatch": "11.0.5",
+    "undici": "8.12.4",
+    "zod": "4.6.7"
+  },
   "dependencies": {
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@eslint/js": "^10.0.0",
     "@playwright/test": "^1.64.0",
     "@testing-library/jest-dom": "^7.0.0",
