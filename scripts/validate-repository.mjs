@@ -40,6 +40,8 @@ const excludedDirectories = new Set([
   ".pytest_cache",
   ".ruff_cache",
   ".test-runtime",
+  ".runtime",
+  ".e2e-runtime",
   ".venv",
   "coverage",
   "dist",

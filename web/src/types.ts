@@ -80,3 +80,20 @@ export interface DashboardData {
   anomalies: Anomaly[];
   players: PlayerSummary[];
 }
+
+/** Consistently scoped cohort evidence; null rate means not yet observable. */
+export interface CohortDossier {
+  as_of: string | null;
+  available_through: string | null;
+  summary: { cohort_players: number; events: number; late_events: number };
+  definition: string;
+  retention: {
+    cohort_date: string;
+    day_number: number;
+    cohort_size: number;
+    mature_players: number;
+    censored_players: number;
+    retained_players: number;
+    retention_rate: number | null;
+  }[];
+}

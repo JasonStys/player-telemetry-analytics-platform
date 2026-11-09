@@ -28,6 +28,16 @@ coverage output, dependency folders, caches, and workflow artifacts are intentio
 
 ## Contracts, Python, and command scripts
 
+| New file | Purpose |
+|---|---|
+| `src/telemetry_platform/cohorts.py` | Transactional as-known-at acquisition cohort membership, totals and mature retention. |
+| `tests/test_cohorts.py` | Independent synthetic cohort arithmetic, late receipt, UTC and HTTP boundary checks. |
+| `web/src/CohortReview.tsx` | Scoped analyst filters, explicit maturity/error/empty states and accessible results. |
+| `web/src/CohortReview.test.tsx` | Component submission, null-versus-zero and failed-request behavior. |
+| `web/e2e/cohorts.spec.ts` | Real API/UI cohort reconciliation, narrow viewport and Axe journey. |
+| `docs/cohort-review.md` | Membership, date, denominator and interpretation rules. |
+| `docs/reports/practical-workflows-20261109.md` | Dated evidence and honest local/hosted limits. |
+
 | File | Purpose |
 |---|---|
 | `contracts/event-v1.schema.json` | Publishes the version-one telemetry event contract independently of Python. |

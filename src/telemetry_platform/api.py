@@ -10,11 +10,13 @@ import os
 import re
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from datetime import date
 from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
+from telemetry_platform.cohorts import cohort_review
 from telemetry_platform.generator import GeneratorConfig, generate_events
 from telemetry_platform.metrics import MetricService
 from telemetry_platform.models import PLAYER_ID_PATTERN, JsonObject
@@ -94,6 +96,25 @@ def create_app(database_path: str | None = None) -> FastAPI:  # noqa: PLR0915
         warehouse, service = use_service()
         try:
             return service.summary()
+        finally:
+            warehouse.close()
+
+    @application.get("/api/cohort-review", tags=["analytics"])
+    def review_cohort(
+        start: date | None = None,
+        end: date | None = None,
+        platform: str | None = None,
+        version: str | None = None,
+        as_of: date | None = None,
+    ) -> JsonObject:
+        """Return one consistently filtered, as-known-at cohort retention dossier."""
+        warehouse, _service = use_service()
+        try:
+            return cohort_review(
+                warehouse, start=start, end=end, platform=platform, version=version, as_of=as_of
+            )
+        except ValueError as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
         finally:
             warehouse.close()
 
