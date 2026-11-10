@@ -185,3 +185,9 @@ Measured results are recorded in:
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the quality gate and [`SECURITY.md`](SECURITY.md) for safe
 reporting. The [latest maintenance audit](docs/reports/maintenance-audit-2026-09-18.md) records
 hosted verification and dependency decisions. Released under the [MIT License](LICENSE).
+
+## Documentation editions
+
+Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
+
+[Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.

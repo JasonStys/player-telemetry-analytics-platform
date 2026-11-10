@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "project": "player-telemetry-analytics-platform",
+  "author": "Jason Stys",
+  "editionDate": "2026-11-09",
+  "sourceBaseline": "f83161e7ce500027fe5313bb08e36e9716a94be2",
+  "sourceUrl": "https://github.com/JasonStys/player-telemetry-analytics-platform/tree/f83161e7ce500027fe5313bb08e36e9716a94be2",
+  "functionalEvidenceBaseline": "f83161e7ce500027fe5313bb08e36e9716a94be2",
+  "evidenceObservedAt": "2026-11-10T05:25:40.628667+00:00",
+  "workflowEvidence": [
+    {
+      "conclusion": "success",
+      "databaseId": 42720166549,
+      "event": "push",
+      "headSha": "f83161e7ce500027fe5313bb08e36e9716a94be2",
+      "name": "CI",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/player-telemetry-analytics-platform/actions/runs/42720166549"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42720166520,
+      "event": "push",
+      "headSha": "f83161e7ce500027fe5313bb08e36e9716a94be2",
+      "name": "CodeQL",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/player-telemetry-analytics-platform/actions/runs/42720166520"
+    }
+  ],
+  "summary": "Review acquisition cohorts with receipt-time cutoffs, cross-platform later activity and mature versus censored D0/D1/D7 denominators.",
+  "rationale": "Prevents late-arrival hindsight and immature cohorts from producing misleading retention comparisons.",
+  "limitations": [
+    "Synthetic local controlled lab without authentication or support for real private player data.",
+    "Cohort filters apply to the dedicated review; other existing warehouse panels remain global.",
+    "A receipt watermark does not prove data completeness, statistical certainty or a historical database revision archive."
+  ],
+  "documents": [
+    {
+      "filename": "project-guide.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 47037,
+      "sha256": "cef3f31c966914fd054e7b15acce1b11d504a98b116c2a9ae850e8f94d37f58c",
+      "sourceBaseline": "f83161e7ce500027fe5313bb08e36e9716a94be2",
+      "visualReview": {
+        "approved": true,
+        "method": "Every rendered page individually viewed at readable original resolution",
+        "pageCount": 7,
+        "renderedPageSha256": {
+          "page-1.png": "08d09bd37d64d2b3c7de0dda00621429f2728c25bf45852c6737f1f19fb7757b",
+          "page-2.png": "458608d0b420ec414d157f42c434ccda3f2417151606b46074bd0284b7900c41",
+          "page-3.png": "79573b26139065983bc8ea56a1b173b5b625b0ee173cf4467c4f0e59b372152f",
+          "page-4.png": "22a5b3b4dfaeb0e135e61fe5306261015a3f040ba1d7d6b7d956cae7ccaec370",
+          "page-5.png": "e1693dfd176eca1f3a6ef495e01570546723c7d6d719c7b59054312696e25162",
+          "page-6.png": "a2cf17a72f87a384f0f6559cefcbd5fbaa3757fb7ff9dd5beaabe767a144c0f9",
+          "page-7.png": "de21df64e425ef29b9cabe21e13f10935a176945162cf9d7f50dce7351cfa495"
+        }
+      }
+    }
+  ],
+  "scope": "Reviewed documentation editions of the cited source. Checksums identify bytes, not authorship. Historical measurements retain their own dates; integration CI must be checked separately."
+}

@@ -1,3 +1,4 @@
 # File: .gitattributes
 # Purpose: Keep repository text files on LF so Bash, containers, and cross-platform tooling agree.
 * text=auto eol=lf
+docs/reports/project-guide.docx binary
