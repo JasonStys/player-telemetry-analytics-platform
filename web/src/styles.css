@@ -85,6 +85,63 @@ footer {
   margin-inline: auto;
 }
 
+.native-workspace fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.native-workspace label {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+}
+.native-workspace input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  font: inherit;
+  background: #102c36;
+  color: var(--ink);
+}
+.native-workspace button {
+  margin: 0.4rem 0.35rem 0.4rem 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--mint);
+  border-radius: 0.5rem;
+  background: var(--mint);
+  color: #071d25;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.native-workspace button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.native-workspace button:focus-visible,
+.native-workspace input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.native-workspace details {
+  line-height: 1.55;
+  margin: 1rem 0;
+}
+.native-workspace .metric-grid {
+  gap: 1rem;
+}
+.native-workspace pre {
+  max-width: 100%;
+  overflow: auto;
+}
+.native-workspace code {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
 .site-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

@@ -20,6 +20,9 @@ The editable Markdown remains the maintenance source. The Word files are readabl
 
 ### Usage and operations
 
+- [native analyst application](native-application.md)
+- [native application validation](reports/native-application-2026-11-10.md)
+
 - [cohort review](cohort-review.md)
 - [operations](operations.md)
 

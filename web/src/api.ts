@@ -5,6 +5,7 @@
  */
 import type { DashboardData, TimelineEvent } from "./types";
 import type { CohortDossier } from "./types";
+import { nativeHeaders } from "./native";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") ?? "";
 
@@ -17,7 +18,7 @@ export function loadCohortReview(
 
 async function requestJson<T>(path: string, signal?: AbortSignal): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {
-    headers: { Accept: "application/json" },
+    headers: { Accept: "application/json", ...nativeHeaders(API_BASE) },
     signal,
   });
   if (!response.ok) {

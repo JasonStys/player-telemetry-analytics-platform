@@ -10,7 +10,15 @@ import { fileURLToPath } from "node:url";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputPath = join(repositoryRoot, "docs", "code-index.md");
-const supportedExtensions = new Set([".py", ".ts", ".tsx", ".mjs", ".sh", ".sql"]);
+const supportedExtensions = new Set([
+  ".py",
+  ".ts",
+  ".tsx",
+  ".mjs",
+  ".sh",
+  ".sql",
+  ".ps1",
+]);
 const excludedDirectories = new Set([
   ".git",
   ".mypy_cache",
@@ -21,12 +29,20 @@ const excludedDirectories = new Set([
   ".ruff_cache",
   ".test-runtime",
   ".venv",
+  ".venv-native31410",
+  ".runtime",
+  ".e2e-runtime",
+  "build",
+  "artifacts",
+  "release",
   "coverage",
   "dist",
   "htmlcov",
   "node_modules",
 ]);
 const patterns = [
+  /^\s*function\s+([A-Za-z_][\w-]*)/,
+  /^\s*\$([A-Za-z_][\w]*)\s*=/,
   /^\s*(?:async\s+)?def\s+([A-Za-z_][\w]*)\s*\(/,
   /^\s*class\s+([A-Za-z_][\w]*)\b/,
   /\b(?:function|class|interface|type|enum)\s+([A-Za-z_$][\w$]*)/,
@@ -39,7 +55,8 @@ const patterns = [
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
-    if (entry.isDirectory()) return excludedDirectories.has(entry.name) ? [] : walk(path);
+    if (entry.isDirectory())
+      return excludedDirectories.has(entry.name) ? [] : walk(path);
     return supportedExtensions.has(extname(path)) ? [path] : [];
   });
 }
@@ -83,8 +100,13 @@ function render() {
 function main() {
   const generated = render();
   if (process.argv.includes("--check")) {
-    if (!existsSync(outputPath) || readFileSync(outputPath, "utf8") !== generated) {
-      console.error("docs/code-index.md is stale; run node scripts/generate-code-index.mjs");
+    if (
+      !existsSync(outputPath) ||
+      readFileSync(outputPath, "utf8") !== generated
+    ) {
+      console.error(
+        "docs/code-index.md is stale; run node scripts/generate-code-index.mjs",
+      );
       process.exitCode = 1;
       return;
     }

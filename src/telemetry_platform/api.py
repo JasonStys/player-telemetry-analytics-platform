@@ -54,7 +54,7 @@ def create_app(database_path: str | None = None) -> FastAPI:  # noqa: PLR0915
 
     application = FastAPI(
         title="Player Telemetry Analytics Platform",
-        version="1.0.0",
+        version="1.1.0",
         description="Synthetic telemetry quality, lineage, and analytics API.",
         lifespan=lifespan,
     )
