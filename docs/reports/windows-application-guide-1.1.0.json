@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "repository": "player-telemetry-analytics-platform",
+  "runtimeVersion": "1.1.0",
+  "runtimeSource": "9307b4aee75c7304ac9971dd502f5191d7fefe07",
+  "createdAt": "2026-11-11T06:47:50.314Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.0.docx",
+  "sha256": "9fc84b128dfb963a2b784f6ab402bc5067bd083a72ee2e9a7fce5dcf2a86ecdc",
+  "screenshots": [
+    {
+      "file": "native-cohort-review.png",
+      "sha256": "edcc6350c517c39f22b0bc2e76eedfe16b31bb19fde5cda468a5da4a83122083",
+      "width": 1114,
+      "height": 353,
+      "caption": "The installed analytics application displays the selected cohort and original warehouse results after the imported event workflow."
+    },
+    {
+      "file": "native-workspace.png",
+      "sha256": "b80613b2d02d8308ce1778c81598763d8f28acb275d35d16aef62d95f411ff7a",
+      "width": 1180,
+      "height": 1087,
+      "caption": "The installed application displays the accepted workspace and its original project results using synthetic data."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "desktop/service.py",
+      "first": 47,
+      "last": 69,
+      "sha256": "c4366eafe9458df478c8ce97b51663c732535cf337b377aab7980d2b03e674c1",
+      "url": "https://github.com/JasonStys/player-telemetry-analytics-platform/blob/9307b4aee75c7304ac9971dd502f5191d7fefe07/desktop/service.py#L47"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Real native workflows",
+      "observed": "Two installed launches retained two batches/five players; independent Parquet reading and original DuckDB cohort/session results passed.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and security",
+      "observed": "All required main workflows for the runtime revision passed; processed CodeQL analyses reported zero open main alerts before release.",
+      "result": "Passed"
+    },
+    {
+      "name": "Distribution identity",
+      "observed": "All 2 assets matched provider/checksum identities; all 121 installed files remained unchanged during acceptance.",
+      "result": "Verified"
+    },
+    {
+      "name": "PC scope",
+      "observed": "New per-user version folder and individual links verified. Synthetic profiles only; existing data and Docker were not used or changed.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": {
+    "approved": true,
+    "reviewer": "root",
+    "ooxmlSchema": "passed",
+    "pages": {
+      "page-1.png": "d9e36e7dc997d8d50fe5c90836e14fddac294ec1f576780870ea80c43a3b37ff",
+      "page-2.png": "6723519bfeb21bb4162500f693474a6e157a36f2b174d5e45bde2f870cc68372",
+      "page-3.png": "05d1ff53276bb48333da1aa516feb7efe3397c17a8257899e9850fd741702c31",
+      "page-4.png": "bd9bdda1bb34ec5672b0fda0d72ff12357e1453afe706e4d11bb4e5c72e93932"
+    },
+    "scope": "All four final page contents individually inspected; only exact identical pixels carry prior inspection.",
+    "checkedUtc": "2026-11-11T07:15:10.720691+00:00"
+  }
+}
