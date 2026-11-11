@@ -8,6 +8,7 @@ import { useEffect, useMemo, useState } from "react";
 import { loadDashboard, loadTimeline } from "./api";
 import type { DashboardData, TimelineEvent } from "./types";
 import CohortReview from "./CohortReview";
+import NativeWorkspace from "./NativeWorkspace";
 
 function formatPercent(value: number | null): string {
   return value === null ? "Not available" : `${(value * 100).toFixed(1)}%`;
@@ -42,6 +43,7 @@ function EmptyState({ children }: { children: string }) {
 }
 
 export default function App() {
+  const [revision, setRevision] = useState(0);
   const [dashboard, setDashboard] = useState<DashboardData | null>(null);
   const [timeline, setTimeline] = useState<TimelineEvent[]>([]);
   const [selectedPlayer, setSelectedPlayer] = useState("");
@@ -67,7 +69,7 @@ export default function App() {
         }
       });
     return () => controller.abort();
-  }, []);
+  }, [revision]);
 
   useEffect(() => {
     if (!selectedPlayer) return;
@@ -115,7 +117,8 @@ export default function App() {
       </header>
 
       <main id="main-content">
-        <CohortReview />
+        <NativeWorkspace onChanged={() => setRevision((value) => value + 1)} />
+        <CohortReview key={revision} />
         <p className="sr-only" aria-live="polite">
           {status}
         </p>

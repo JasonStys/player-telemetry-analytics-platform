@@ -69,7 +69,7 @@ def test_api_serves_documented_resources(
         assert len(players) == 2
         timeline = client.get(f"/api/players/{players[0]['player_id']}/timeline").json()
         assert timeline
-        assert client.get("/openapi.json").json()["info"]["version"] == "1.0.0"
+        assert client.get("/openapi.json").json()["info"]["version"] == "1.1.0"
 
 
 def test_api_rejects_invalid_limits_and_player_ids(

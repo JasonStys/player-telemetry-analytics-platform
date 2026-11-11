@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "player-telemetry-analytics-platform"
-version = "1.0.0"
+version = "1.1.0"
 description = "A synthetic, SQL-first game telemetry analytics platform with reproducible data quality evidence."
 readme = "README.md"
 requires-python = ">=3.12,<3.15"

@@ -1,10 +1,21 @@
 # Player Telemetry Analytics Platform
 
+## Native analyst application
+
+The 1.1.0 Windows candidate bundles the full dashboard, real DuckDB/SQL engine and a native
+status window. Import your own bounded synthetic/deidentified NDJSON, inspect quarantined
+counts and batch receipts, generate events, review cohorts, rebuild derived tables and export
+actual Parquet evidence. Its private warehouse persists outside installation files; reopening
+starts a fresh local session over the retained data. Python/Node/Docker are not required by users.
+See the [application guide](docs/native-application.md) and
+[observed native checks](docs/reports/native-application-2026-11-10.md). The candidate is unsigned;
+publication, OS installation and desktop shortcuts are tracked separately.
+
 ## Acquisition cohort review
 
 The dashboard now provides an **Acquisition cohort review** panel for game analysts. Choose first-seen dates, acquisition platform/version and a UTC “known as of” date to review a consistently scoped cohort. The first visible event defines membership; later activity on any platform counts. The API excludes events received after the selected date, so late telemetry cannot leak hindsight into earlier reviews. Exact-day D0/D1/D7 retention shows member, mature, retained and censored counts. Immature windows display **Not yet observable**, with a null rate instead of a misleading zero.
 
-These filters affect this dedicated review panel; existing warehouse overview/anomaly/timeline panels remain global and are labelled separately. `GET /api/cohort-review` exposes the same dossier for analysis. Receipt watermark means observed data availability, not guaranteed delivery completeness or statistical certainty. This remains a local synthetic-data lab with no authentication; do not expose real player data. See [cohort definitions](docs/cohort-review.md) and [new validation](docs/reports/practical-workflows-20261109.md).
+These filters affect this dedicated review panel; existing warehouse overview/anomaly/timeline panels remain global and are labelled separately. `GET /api/cohort-review` exposes the same dossier for analysis. Receipt watermark means observed data availability, not guaranteed delivery completeness or statistical certainty. The reference API remains an unauthenticated local synthetic-data lab; the native app adds a per-launch local session boundary, not hosted accounts. Do not expose real player data. See [cohort definitions](docs/cohort-review.md) and [new validation](docs/reports/practical-workflows-20261109.md).
 
 [![CI](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/workflows/codeql.yml/badge.svg)](https://github.com/JasonStys/player-telemetry-analytics-platform/actions/workflows/codeql.yml)

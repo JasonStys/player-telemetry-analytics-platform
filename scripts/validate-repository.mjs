@@ -29,7 +29,15 @@ const requiredFiles = [
   "docs/reports/query-plan.md",
   "docs/reports/validation.md",
 ];
-const headerExtensions = new Set([".py", ".ts", ".tsx", ".mjs", ".sh", ".sql", ".css"]);
+const headerExtensions = new Set([
+  ".py",
+  ".ts",
+  ".tsx",
+  ".mjs",
+  ".sh",
+  ".sql",
+  ".css",
+]);
 const excludedDirectories = new Set([
   ".git",
   ".mypy_cache",
@@ -43,6 +51,10 @@ const excludedDirectories = new Set([
   ".runtime",
   ".e2e-runtime",
   ".venv",
+  ".venv-native31410",
+  "build",
+  "artifacts",
+  "release",
   "coverage",
   "dist",
   "htmlcov",
@@ -55,7 +67,8 @@ const excludedDirectories = new Set([
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
-    if (entry.isDirectory()) return excludedDirectories.has(entry.name) ? [] : walk(path);
+    if (entry.isDirectory())
+      return excludedDirectories.has(entry.name) ? [] : walk(path);
     return [path];
   });
 }
@@ -83,11 +96,16 @@ function main() {
     const repositoryPath = relative(repositoryRoot, path).replaceAll("\\", "/");
     if (extname(path) === ".md") {
       for (const target of brokenMarkdownLinks(path)) {
-        failures.push(`Broken local Markdown link in ${repositoryPath}: ${target}`);
+        failures.push(
+          `Broken local Markdown link in ${repositoryPath}: ${target}`,
+        );
       }
     }
     if (!headerExtensions.has(extname(path))) continue;
-    const firstLines = readFileSync(path, "utf8").split(/\r?\n/).slice(0, 10).join("\n");
+    const firstLines = readFileSync(path, "utf8")
+      .split(/\r?\n/)
+      .slice(0, 10)
+      .join("\n");
     if (!firstLines.includes("File:") || !firstLines.includes("Purpose:")) {
       failures.push(`Source header is incomplete: ${repositoryPath}`);
     }

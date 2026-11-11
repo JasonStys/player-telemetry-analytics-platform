@@ -1,0 +1,61 @@
+# File: native-app.yml
+# Purpose: Build the genuine standalone Windows application and exercise its private synthetic workflows.
+name: Native application
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows:
+    name: Windows bundled analyst journey
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.14.10"
+          check-latest: true
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+      - name: Install locked build tools
+        shell: pwsh
+        run: |
+          python -m pip install -r requirements.lock -r requirements-native.lock
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m pip install --no-deps -e .
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm --prefix web ci
+      - name: Install pinned Chromium before the timed app journey
+        timeout-minutes: 5
+        working-directory: web
+        run: npx playwright install chromium
+      - name: Build actual standalone app
+        shell: pwsh
+        run: |
+          $env:PLAYER_BUILD_PYTHON = (Get-Command python).Source
+          ./scripts/build-native.ps1 -Output release/windows
+      - name: Exercise actual EXE and independent Parquet oracle
+        shell: pwsh
+        run: |
+          $env:PLAYER_TEST_PYTHON = (Get-Command python).Source
+          node scripts/native-acceptance.mjs release/windows/PlayerTelemetryAnalytics.exe artifacts/native/windows
+      - name: Preserve current build and acceptance evidence briefly
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: player-native-windows
+          retention-days: 1
+          path: |
+            release/windows
+            artifacts/native/windows
+          if-no-files-found: error

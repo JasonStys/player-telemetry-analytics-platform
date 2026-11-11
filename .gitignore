@@ -1,6 +1,7 @@
 # File: .gitignore
 # Purpose: Keep generated, secret, dependency, database, and report artifacts out of source control.
 .venv/
+.venv-native31410/
 .pip-cache/
 .pip-audit-cache/
 .docker-config/
@@ -33,3 +34,6 @@ web/playwright-report/
 web/test-results/
 .DS_Store
 Thumbs.db
+release/
+artifacts/
+*.spec
